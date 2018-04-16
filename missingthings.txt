@@ -1,0 +1,9 @@
+Complete the setuptools file
+
+retry tests
+retry find element logic
+capture image
+config -> https://stackoverflow.com/questions/43136925/create-a-config-file-to-hold-values-like-username-password-url-in-python-behave
+sphinx documentation
+run_framework debería tomar el path de ejecución de un config file
+run headless (configurable, puede ser en before_all)
