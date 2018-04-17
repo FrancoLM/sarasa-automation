@@ -2,4 +2,3 @@
 .tox/*
 .pytest_cache/*
 .idea/*
-sarasa_framework.egg-info/*
