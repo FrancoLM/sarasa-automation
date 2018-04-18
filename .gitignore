@@ -2,3 +2,5 @@
 .tox/*
 .pytest_cache/*
 .idea/*
+output/*
+pretty.output

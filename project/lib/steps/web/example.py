@@ -1,3 +1,4 @@
+import logging
 import time
 from behave import *
 from selenium import webdriver
@@ -8,6 +9,8 @@ from project.lib.steps.common.decorators import log_exec_time
 
 @step("I open a browser")
 def step_impl(context, maximized=True):
+    logging.debug("Testing printing")
+    logging.error("Error message")
     context.driver = webdriver.Chrome()
     if maximized:
         context.driver.maximize_window()

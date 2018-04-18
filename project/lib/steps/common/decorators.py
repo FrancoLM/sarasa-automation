@@ -2,6 +2,8 @@ import logging
 import time
 
 
+# TODO: Change the function name for the step name (most functions are called step_impl)
+# TODO: Or find another identifier
 def log_exec_time(method):
     def timed_function(*args, **kw):
         line_length = 42
