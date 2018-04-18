@@ -1,5 +1,6 @@
-Requirements:
+**Slayer Framework... It came to SLAY!**
 
+Requirements:
 - Python 3.x (Python >= 3.6 recommended)
 - virtualenv
     You can follow this tutorial: http://docs.python-guide.org/en/latest/dev/virtualenvs/
