@@ -2,6 +2,7 @@ import logging
 import time
 from behave import *
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 import os
 
 from project.lib.steps.common.decorators import log_exec_time
@@ -21,4 +22,10 @@ def step_impl(context, maximized=True):
 def step_impl(context):
     context.driver.get("https://www.google.com")
     context.driver.get_screenshot_as_file(os.path.join(os.getcwd(), "output", "Google_page.png"))
-    time.sleep(5)
+    time.sleep(3)
+
+
+@step("I wait for an invalid element")
+def step_impl(context):
+    context.driver.find_element(By.ID, "invalid")
+    time.sleep(3)
