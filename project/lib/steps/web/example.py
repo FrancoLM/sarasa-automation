@@ -7,15 +7,24 @@ import os
 
 from project.lib.steps.common.decorators import log_exec_time
 
+logger = logging.getLogger(__name__)
+
 
 @step("I open a browser")
 def step_impl(context, maximized=True):
-    logging.debug("Testing printing")
-    logging.error("Error message")
+    logger.debug("Testing printing")
+    logger.error("Error message")
     context.driver = webdriver.Chrome()
     if maximized:
         context.driver.maximize_window()
 
+
+@step("I test logging")
+def step_impl(context):
+    logger.info("I'm opening the web page...")
+    logger.debug("Testing debug message")
+    logger.warning("Warning message")
+    logger.error("Error message")
 
 @step("I go to the Google web page")
 @log_exec_time

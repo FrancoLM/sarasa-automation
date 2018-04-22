@@ -16,4 +16,7 @@ Feature: Open Google
     Given I open a browser
     And I go to the Google web page
     And I wait for an invalid element
-    
+
+  @TAG_4
+  Scenario: Test logging
+    Given I test logging

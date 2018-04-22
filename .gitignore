@@ -4,3 +4,4 @@
 .idea/*
 output/*
 pretty.output
+*.log
