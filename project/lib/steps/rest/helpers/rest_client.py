@@ -8,6 +8,7 @@ REQUESTS_METHODS = {
     "DELETE":   requests.delete,
 }
 
+
 class RESTClient(object):
     def __init__(self, base_urn, port, protocol="https"):
         self._base_urn = base_urn
@@ -31,23 +32,23 @@ class RESTClient(object):
         self._username = username
         self._password = password
 
-    def send_request(self, method, id=None, data=None, params=None, headers=None, json_content=None, files=None):
+    def send_request(self, method, object_id=None, data=None, params=None, headers=None, json_content=None, files=None):
         url = self._api_endpoint
-        if id:
-            url += '/' + id
+        if object_id:
+            url += '/' + object_id
         if not headers:
             headers = {}
 
         check_ssl_certs = False
         requests.packages.urllib3.disable_warnings()
-        response = REQUESTS_METHODS[method](url, data=data, params=params, headers=headers, json=json_content,
-                                            verify=check_ssl_certs, auth=self._auth, files=files)
-        return response
+        request_response = REQUESTS_METHODS[method](url, data=data, params=params, headers=headers, json=json_content,
+                                                    verify=check_ssl_certs, auth=self._auth, files=files)
+        return request_response
 
 
 if __name__ == "__main__":
-    """Small test to test if it works. To delete int he future"""
-    my_client = RESTClient("jsonplaceholder.typicode.com", 443)
-    my_client.set_api_endpoint("posts")
-    response = my_client.send_request("GET")
-    print(response)
+    """Small test to test if it works. To delete in the future"""
+    rest_client = RESTClient("jsonplaceholder.typicode.com", 443)
+    rest_client.set_api_endpoint("posts")
+    request_response = rest_client.send_request("GET")
+    print(request_response)

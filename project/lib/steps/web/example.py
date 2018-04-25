@@ -5,7 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import os
 
-from project.lib.steps.common.decorators import log_exec_time
+from project.lib.steps.common.decorators import dec_log_execution_time
 
 logger = logging.getLogger(__name__)
 
@@ -27,7 +27,7 @@ def step_impl(context):
     logger.error("Error message")
 
 @step("I go to the Google web page")
-@log_exec_time
+@dec_log_execution_time
 def step_impl(context):
     context.driver.get("https://www.google.com")
     context.driver.get_screenshot_as_file(os.path.join(os.getcwd(), "output", "Google_page.png"))
