@@ -1,14 +1,13 @@
 import os
 
-from behave.__main__ import main
+from behave.__main__ import run_behave
+from behave.configuration import Configuration as BehaveConfig
 from argparse import ArgumentParser
 import logging.config
 import yaml
 
-# Config file which stores the Environment information
 from yaml.scanner import ScannerError
-
-from slayer.slayer_configuration import set_env_variables, new_env_variable#, get_behave_args
+from slayer.slayer_configuration import set_env_variables, new_env_variable
 
 
 def configure_environment():
@@ -18,8 +17,6 @@ def configure_environment():
     parser.add_argument('--framework-config', type=str, help='Slayer Framework Configuration File', required=False, default="config.cfg")
     parser.add_argument('--logs-config', type=str, help='Slayer Logs Configuration File', required=False, default="logger.yaml")
     # TODO: See if it's possible to relocate the behave config file
-    # parser.add_argument('--behave-config', type=str, help='Configuration File for Behave-specific options',
-    #                     required=False, default="behave.ini")
 
     # Proyect-specific variables (_) should be parsed separately
     default_args, _ = parser.parse_known_args()
@@ -27,8 +24,7 @@ def configure_environment():
     new_env_variable("SLAYER_ROOT", os.getcwd())
     new_env_variable("SLAYER_CONFIG", os.path.join(os.getenv("SLAYER_ROOT"), "config", default_args.framework_config))
     new_env_variable("LOGS_CONFIG", os.path.join(os.getenv("SLAYER_ROOT"), "config", default_args.logs_config))
-    new_env_variable("APPDATA", os.path.join(os.getenv("SLAYER_ROOT"), "behave.ini"))
-
+    new_env_variable("APPDATA", os.path.join(os.getenv("SLAYER_ROOT")))
 
     set_env_variables()
     # set_behave_args()
@@ -60,20 +56,26 @@ def configure_logging():
     print("Logger configured")
 
 
-def behave_executor():
+def set_behave_args():
+    cfg_file = os.getenv("APPDATA")
+    cfg = BehaveConfig()
+    return cfg
+
+def behave_executor(behave_config):
     # Behave-specific configuration
-    #config = get_behave_args()
-    #cfg = behave_main.Configuration(config)
-    #behave_main.run_behave(cfg)
-    main()
+    run_behave(behave_config)
 
 
 def run_framework():
+    print("SLAYER FRAMEWORK".center(35, "-"))
+    print("-" * 35)
+    # Set env vairables and paths
     configure_environment()
     clean_output_folder()
-    configure_logging()
-
-    behave_executor()
+    # Read behave config file and customize it for SLAYER
+    behave_config = set_behave_args()
+    # configure_logging()
+    # Run tests with the behave executor
+    behave_executor(behave_config)
     # TODO: Reporter Factory
     # generate_report()
-

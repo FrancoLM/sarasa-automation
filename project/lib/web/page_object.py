@@ -17,8 +17,8 @@ class PageObject(object):
 
     def find_elements(self, by_locator, locator_value, wait=1, retries=3):
         """Function retries @retries times, waiting @wait seconds after each iteration"""
-        for _ in retries:
-            
+        # for _ in retries:
+
 
     def _find_element_by_id(self, element_id):
         """Function retries @retries times, waiting @wait seconds after each iteration"""

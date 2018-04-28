@@ -7,7 +7,7 @@ SLAYER_CONFIG = None
 def new_env_variable(name, value, print_to_console=True):
     os.environ[name] = value
     if print_to_console:
-        print("{var_name}: {var_value}".format(var_name=name, var_value=value))
+        print("{var_name:>15} ==> {var_value}".format(var_name=name, var_value=value))
 
 
 def get_config():

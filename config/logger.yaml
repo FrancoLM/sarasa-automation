@@ -3,23 +3,22 @@ disable_existing_loggers: True
 formatters:
   # Add new formatters if needed by your application
   basic:
-    format: '%(asctime)s: %(name)-36s %(levelname)-8s %(message)s'
+    format: '%(asctime)s: %(name)-6s %(levelname)-8s %(message)s'
 handlers:
-  # Console and file loggers have their own configuration
   console:
     class: logging.StreamHandler
-    level: INFO
+    level: DEBUG
     formatter: basic
     stream: ext://sys.stdout
   file:
     class: logging.FileHandler
-    level: INFO
+    level: DEBUG
     formatter: basic
     # FIXME: log file should go to output.
     filename: slayer.log
     mode: w
     encoding: utf-8
 root:
-  level: INFO
+  level: DEBUG
   propagate: True
   handlers: [console, file]
