@@ -5,7 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import os
 
-from project.lib.steps.common.decorators import dec_log_execution_time
+from project.lib.common.decorators import dec_log_execution_time
 
 
 @step("I open a browser")
@@ -23,6 +23,7 @@ def step_impl(context):
     logging.debug("Testing debug message")
     logging.warning("Warning message")
     logging.error("Error message")
+
 
 @step("I go to the Google web page")
 @dec_log_execution_time

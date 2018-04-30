@@ -47,7 +47,7 @@ class RESTClient(object):
 
 
 if __name__ == "__main__":
-    """Small test to test if it works. To delete in the future"""
+    """Small tests to tests if it works. To delete in the future"""
     rest_client = RESTClient("jsonplaceholder.typicode.com", 443)
     rest_client.set_api_endpoint("posts")
     request_response = rest_client.send_request("GET")

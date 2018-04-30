@@ -4,11 +4,13 @@ formatters:
   # Add new formatters if needed by your application
   basic:
     format: '%(asctime)s: %(name)-6s %(levelname)-8s %(message)s'
+  in_console:
+    format: '        %(asctime)s: %(name)-6s %(levelname)-8s %(message)s'
 handlers:
   console:
     class: logging.StreamHandler
     level: DEBUG
-    formatter: basic
+    formatter: in_console
     stream: ext://sys.stdout
   file:
     class: logging.FileHandler
