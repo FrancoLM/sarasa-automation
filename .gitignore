@@ -5,3 +5,4 @@
 output/*
 pretty.output
 *.log
+Slayer_Framework.egg-info/*

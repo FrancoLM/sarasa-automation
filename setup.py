@@ -1,20 +1,11 @@
-"""A setuptools based setup module.
-
-See:
-https://packaging.python.org/en/latest/distributing.html
-https://github.com/pypa/sampleproject
-"""
-
-# Always prefer setuptools over distutils
 from setuptools import setup, find_packages
-# To use a consistent encoding
 from codecs import open
 from os import path
 
 here = path.abspath(path.dirname(__file__))
 
 # Get the long description from the README file
-with open(path.join(here, 'README.md'), encoding='utf-8') as f:
+with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 # Arguments marked as "Required" below must be included for upload to PyPI.
@@ -55,19 +46,7 @@ setup(
     #
     # This field corresponds to the "Description" metadata field:
     # https://packaging.python.org/specifications/core-metadata/#description-optional
-    long_description=long_description,  # Optional
-
-    # Denotes that our long_description is in Markdown; valid values are
-    # text/plain, text/x-rst, and text/markdown
-    #
-    # Optional if long_description is written in reStructuredText (rst) but
-    # required for plain-text or Markdown; if unspecified, "applications should
-    # attempt to render [the long_description] as text/x-rst; charset=UTF-8 and
-    # fall back to text/plain if it is not valid rst" (see link below)
-    #
-    # This field corresponds to the "Description-Content-Type" metadata field:
-    # https://packaging.python.org/specifications/core-metadata/#description-content-type-optional
-    long_description_content_type='text/markdown',  # Optional (see note above)
+    #long_description = long_description,  # Optional
 
     # This should be a valid link to your project's main homepage.
     #
@@ -103,14 +82,9 @@ setup(
 
         # Specify the Python versions you support here. In particular, ensure
         # that you indicate whether you support Python 2, Python 3 or both.
-        'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.6'
     ],
-
-    # This field adds keywords for your project which will appear on the
-    # project page. What does your project relate to?
-    #
-    # Note that this is a string of words separated by whitespace, not a list.
+    license = "BSD",
     keywords='slayer automation framework',  # Optional
 
     # You can just specify package directories manually here if your project is
@@ -130,9 +104,32 @@ setup(
     #
     # For an analysis of "install_requires" vs pip's requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
-    #install_requires=['peppercorn'],  # Optional
+    install_requires=[
+        "astroid>=1.6.3",
+        "attrs>=17.4.0",
+        "behave>=1.2.6",
+        "certifi>=2018.4.16",
+        "chardet>=3.0.4",
+        "colorama>=0.3.9",
+        "configobj>=5.0.6",
+        "idna>=2.6",
+        "isort>=4.3.4",
+        "lazy-object-proxy>=1.3.1",
+        "mccabe>=0.6.1",
+        "more-itertools>=4.1.0",
+        "parse>=1.8.2",
+        "parse-type>=0.4.2",
+        "pluggy>=0.6.0",
+        "py>=1.5.3",
+        "PyYAML>=3.12",
+        "requests>=2.18.4",
+        "selenium>=3.11.0",
+        "six>=1.11.0",
+        "urllib3>=1.22",
+        "wrapt>=1.10.1"
+    ],  # Optional
 
-    # List additional groups of dependencies here (e.g. development
+    # List additional groups of dependencies here (e.g. development'
     # dependencies). Users will be able to install these using the "extras"
     # syntax, for example:
     #
