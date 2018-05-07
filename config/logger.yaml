@@ -1,15 +1,17 @@
 version: 1
 disable_existing_loggers: True
 formatters:
-  # Add new formatters if needed by your application
+  # Add a new formatter if it's needed by your application
   basic:
-    format: '%(asctime)s: %(name)-6s %(levelname)-8s %(message)s'
+    format: '%(asctime)s %(message)s'
+    datefmt: '%Y-%m-%d %H:%M:%S'
   in_console:
     format: '        %(asctime)s: %(name)-6s %(levelname)-8s %(message)s'
+    datefmt: '%Y-%m-%d %H:%M:%S'
 handlers:
   console:
     class: logging.StreamHandler
-    level: DEBUG
+    level: INFO
     formatter: in_console
     stream: ext://sys.stdout
   file:
@@ -22,5 +24,5 @@ handlers:
     encoding: utf-8
 root:
   level: DEBUG
-  propagate: True
+  propagate: False
   handlers: [console, file]

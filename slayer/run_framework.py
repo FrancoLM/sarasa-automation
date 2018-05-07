@@ -14,8 +14,10 @@ def configure_environment():
     # TODO: Add validation for each variable
     # TODO: Support arguments as well as config variables
     parser = ArgumentParser(description='Slayer Framework... it came to SLAY!')
-    parser.add_argument('--framework-config', type=str, help='Slayer Framework Configuration File', required=False, default="config.cfg")
-    parser.add_argument('--logs-config', type=str, help='Slayer Logs Configuration File', required=False, default="logger.yaml")
+    parser.add_argument('--framework-config', type=str, help='Slayer Framework Configuration File', required=False,
+                        default="config.cfg")
+    parser.add_argument('--logs-config', type=str, help='Slayer Logs Configuration File', required=False,
+                        default="logger.yaml")
     # TODO: See if it's possible to relocate the behave config file
 
     # Proyect-specific variables (_) should be parsed separately
@@ -27,8 +29,8 @@ def configure_environment():
     new_env_variable("LOGS_CONFIG", os.path.join(os.getenv("SLAYER_ROOT"), "config", default_args.logs_config))
     new_env_variable("APPDATA", os.path.join(os.getenv("SLAYER_ROOT")))
 
+    # Set env variables from the config file (--framework-config)
     set_env_variables()
-    # set_behave_args()
 
 
 def clean_output_folder():
@@ -36,31 +38,39 @@ def clean_output_folder():
     # raise("Not Implemented")
 
 
-def configure_logging():
+def configure_logging(context):
     # FIXME: Support DEBUG logging. This logger is created before the logging configuration for behave
     #   is called. Since behave configures the root logger, the configuration is overwritten.
     # FIXME: Log file should include the behave output too
     # Create log folder
     if not os.path.isdir(os.getenv("LOGS_DIR")):
         os.makedirs(os.getenv("LOGS_DIR"))
-
-    # get logging configuration
-    # dictConfig()
     try:
         with open(os.getenv("LOGS_CONFIG"), 'r') as f:
             log_config = yaml.safe_load(f.read())
+        # Configure output dir for the file logger (if available)
+        # TODO: Improve in the future. Find by Handler class recursively
+        if "filename" in log_config["handlers"]["file"].keys():
+            filename = log_config["handlers"]["file"]["filename"]
+            log_config["handlers"]["file"]["filename"] = os.path.join(os.getenv("LOGS_DIR"), filename)
         logging.config.dictConfig(log_config)
+        # logging.getLogger().handlers[1].stream = context.config.outputs[0].stream
+    except KeyError:
+        print("Could not load logging settings. Using default configuration")
     except ScannerError:
-        print("There has been an error loading the logging configuration")
+        print("There was an error when loading the logging configuration")
         raise
-
-    print("Logger configured")
 
 
 def set_behave_args():
-    cfg_file = os.getenv("APPDATA")
+    # cfg_file = os.getenv("APPDATA")
     cfg = BehaveConfig()
+    # Test logging
+    # logging.getLogger().addHandler(cfg.outputs[0])
+    # TODO: Create functions to load the config files (#21122)
+    # cfg.environment_file = # Configurable by user
     return cfg
+
 
 def behave_executor(behave_config):
     # Behave-specific configuration

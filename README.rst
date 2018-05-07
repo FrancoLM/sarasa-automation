@@ -16,3 +16,13 @@ Requirements:
 ######
 Web Automation
 - Make sure you have a webdriver downloaded in your system, and it's added to your PATH.
+
+
+Running the Framework
+Once installed:
+
+from slayer import run_framework
+
+run_framework()
+
+

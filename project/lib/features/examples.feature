@@ -12,7 +12,7 @@ Feature: Open Google
     And I go to the Google web page
 
   @TAG_3 @AUTORETRY
-  Scenario: Open yet another web page
+  Scenario: Open yet another web page 2
     Given I open a browser
     And I go to the Google web page
     And I wait for an invalid element

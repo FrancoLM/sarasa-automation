@@ -23,6 +23,7 @@ def step_impl(context):
     logging.debug("Testing debug message")
     logging.warning("Warning message")
     logging.error("Error message")
+    raise Exception
 
 
 @step("I go to the Google web page")
