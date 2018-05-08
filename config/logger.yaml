@@ -3,7 +3,7 @@ disable_existing_loggers: True
 formatters:
   # Add a new formatter if it's needed by your application
   basic:
-    format: '%(asctime)s %(message)s'
+    format: '%(asctime)s %(levelname)-8s %(message)s'
     datefmt: '%Y-%m-%d %H:%M:%S'
   in_console:
     format: '        %(asctime)s: %(name)-6s %(levelname)-8s %(message)s'
