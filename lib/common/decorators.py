@@ -10,13 +10,11 @@ import math
 def dec_log_execution_time(method):
     def timed_function(*args, **kw):
         line_length = 42
-        logging.info("{0} start".format(method.__name__).center(line_length, '-'))
+        #logging.debug("{0} start".format(method.__name__).center(line_length, '-'))
         start_time = time.time()
         result = method(*args, **kw)
         end_time = time.time()
-        logging.info(('{0} Total time: %2.2f sec'.format(method.__name__) %
-                      (end_time-start_time)).center(line_length, '-'))
-        logging.info('%s' % ('-' * line_length))
+        logging.debug(('{0} Total time: %2.2f sec'.format(method.__name__) % (end_time-start_time)).center(line_length, '-'))
         return result
     return timed_function
 
@@ -64,3 +62,7 @@ def take_screenshot(method):
         # "screenshots", screenshot_name))
         return result
     return web_function
+
+
+#def hello_world():
+#    return "Hello World"

@@ -5,7 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import os
 
-from project.lib.common.decorators import dec_log_execution_time
+from lib.common.decorators import dec_log_execution_time
 
 
 @step("I open a browser")
@@ -35,5 +35,5 @@ def step_impl(context):
 
 @step("I wait for an invalid element")
 def step_impl(context):
-    context.driver._find_element(By.ID, "invalid")
+    context.driver.find_element(By.ID, "invalid")
     time.sleep(3)

@@ -7,3 +7,6 @@ config -> https://stackoverflow.com/questions/43136925/create-a-config-file-to-h
 sphinx documentation
 run_framework debería tomar el path de ejecución de un config file
 run headless (configurable, puede ser en before_all)
+License file
+
+I use the environment.py to set logging up. explain in the README!
