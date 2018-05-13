@@ -23,8 +23,8 @@ def configure_environment():
     # Proyect-specific variables (_) should be parsed separately
     default_args, _ = parser.parse_known_args()
 
-    # TODO: double-check slayer root. Make SLAYER_CONFIG configurable with a config file!
-    new_env_variable("SLAYER_ROOT", os.path.join(os.getcwd(), "slayer"))
+    # TODO: double-check slayer root
+    new_env_variable("SLAYER_ROOT", os.getcwd())
     new_env_variable("SLAYER_CONFIG", os.path.join(os.getenv("SLAYER_ROOT"), "config", default_args.framework_config))
     new_env_variable("LOGS_CONFIG", os.path.join(os.getenv("SLAYER_ROOT"), "config", default_args.logs_config))
     new_env_variable("APPDATA", os.path.join(os.getenv("SLAYER_ROOT")))

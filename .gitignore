@@ -6,3 +6,6 @@ output/*
 pretty.output
 *.log
 Slayer_Framework.egg-info/*
+.coverage
+dist/*
+slayer.egg-info/*

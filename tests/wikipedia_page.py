@@ -1,7 +1,7 @@
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from lib.common.web.page_object import PageObject
+from slayer.lib.common.web.page_object import PageObject
 
 
 class WikipediaPage(PageObject):

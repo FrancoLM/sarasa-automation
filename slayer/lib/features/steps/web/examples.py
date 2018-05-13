@@ -5,7 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import os
 
-from lib.common.decorators import dec_log_execution_time
+from slayer.lib.common.decorators import dec_log_execution_time
 
 
 @step("I open a browser")
