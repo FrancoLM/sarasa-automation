@@ -9,3 +9,4 @@ Slayer_Framework.egg-info/*
 .coverage
 dist/*
 slayer.egg-info/*
+build/*
