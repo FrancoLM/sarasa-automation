@@ -1,7 +1,7 @@
 """Environment file for behave
 Selenium grid may be set here too"""
 import logging
-from slayer.run_framework import configure_logging
+from slayer.slayer_configuration import configure_logging
 
 LINE_LENGTH = 42
 PASSED = "passed"
