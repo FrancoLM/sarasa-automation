@@ -1,6 +1,6 @@
 from behave.__main__ import run_behave
 
-from slayer.slayer_configuration import configure_environment, set_behave_args
+from slayer.slayer_configuration import configure_environment, set_behave_config
 
 
 def behave_executor(behave_config):
@@ -15,7 +15,7 @@ def run_framework():
     configure_environment()
     #clean_output_folder()
     # Read behave config file and customize it for SLAYER
-    behave_config = set_behave_args()
+    behave_config = set_behave_config()
     # configure_logging()
     # Run tests with the behave executor
     behave_executor(behave_config)

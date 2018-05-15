@@ -15,12 +15,13 @@ def before_all(context):
 
 def after_all(context):
     logging.info("%s" % ("-" * LINE_LENGTH))
+    scenarios = []
     for feature in context._runner.features:
-        scenarios = feature.scenarios
-        logging.info("PASSED Scenarios:")
-        [logging.info("\t" + scenario.name) for scenario in scenarios if scenario.status.name == PASSED]
-        logging.info("FAILED Scenarios:")
-        [logging.info("\t" + scenario.name) for scenario in scenarios if scenario.status.name == FAILED]
+        scenarios += feature.scenarios
+    logging.info("PASSED Scenarios:")
+    [logging.info("\t" + scenario.name) for scenario in scenarios if scenario.status.name == PASSED]
+    logging.info("FAILED Scenarios:")
+    [logging.info("\t" + scenario.name) for scenario in scenarios if scenario.status.name == FAILED]
     logging.info("SLAYER EXECUTION FINISHED")
 
 

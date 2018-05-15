@@ -2,7 +2,7 @@
 .tox/*
 .pytest_cache/*
 .idea/*
-output/*
+*/output/*
 pretty.output
 *.log
 Slayer_Framework.egg-info/*
@@ -10,3 +10,4 @@ Slayer_Framework.egg-info/*
 dist/*
 slayer.egg-info/*
 build/*
+

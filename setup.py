@@ -87,17 +87,6 @@ setup(
     license = "BSD",
     keywords='slayer automation framework',  # Optional
 
-    # You can just specify package directories manually here if your project is
-    # simple. Or you can use find_packages().
-    #
-    # Alternatively, if you just want to distribute a single Python file, use
-    # the `py_modules` argument instead as follows, which will expect a file
-    # called `my_module.py` to exist:
-    #
-    #   py_modules=["my_module"],
-    #
-    packages=find_packages(exclude=['contrib', 'docs', 'tests', 'output', 'deployment']),  # Required
-
     # This field lists other packages that your project depends on to run.
     # Any package you put here will be installed by pip when your project is
     # installed, so they must be valid existing projects.
@@ -129,27 +118,13 @@ setup(
         "wrapt>=1.10.1"
     ],  # Optional
 
-    # List additional groups of dependencies here (e.g. development'
-    # dependencies). Users will be able to install these using the "extras"
-    # syntax, for example:
-    #
-    #   $ pip install sampleproject[dev]
-    #
-    # Similar to `install_requires` above, these must be valid existing
-    # projects.
-    #extras_require={  # Optional
-    #    'dev': ['check-manifest'],
-    #    'tests': ['coverage'],
-    #},
-
-    # If there are data files included in your packages that need to be
-    # installed, specify them here.
-    #
-    # If using Python 2.6 or earlier, then these have to be included in
-    # MANIFEST.in as well.
+    packages=find_packages(exclude=['contrib', 'docs', 'tests', 'output', 'deployment']),  # Required
+    #package_dir={'config': 'slayer/config'},
     #package_data={  # Optional
-    #    'sample': ['package_data.dat'],
+    #    'config': ['config/config.cfg'],
     #},
+    include_package_data=True,
+
 
     # Although 'package_data' is the preferred approach, in some case you may
     # need to place data files outside of your packages. See:

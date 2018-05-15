@@ -64,17 +64,22 @@ def configure_logging(context):
 def configure_environment():
     parser = ArgumentParser(description='Slayer Framework... it came to SLAY!')
     parser.add_argument('--framework-config',
-                        required=True,
+                        required=False,
                         action='store',
-                        help='Slayer Framework Configuration File')
+                        help='Slayer Framework Configuration File',
+                        default='{}{}config{}config.cfg'.format(os.path.dirname(__file__), os.sep, os.sep))
     parser.add_argument('--logs-config',
-                        required=True,
-                        help='Slayer Logs Configuration File')
+                        required=False,
+                        help='Slayer Logs Configuration File',
+                        default='{}{}config{}logger.yaml'.format(os.path.dirname(__file__), os.sep, os.sep))
     parser.add_argument('--behave-config',
                         required=False,
                         help='Relative Path for the Behave Configuration File. The file must be named "behave.ini"',
-                        default="")
-
+                        default='')
+    parser.add_argument('--tags',
+                        required=False,
+                        help='Tags for the tests that will be executed',
+                        default='')
     default_args, other_args = parser.parse_known_args()
 
     # TODO: double-check slayer root. Make SLAYER_CONFIG configurable with a config file!
@@ -89,9 +94,10 @@ def configure_environment():
     set_env_variables()
 
 
-def set_behave_args():
+def set_behave_config():
     # cfg_file = os.getenv("APPDATA")
     cfg = BehaveConfig()
+    cfg.environment_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "environment.py")
     # Test logging
     # logging.getLogger().addHandler(cfg.outputs[0])
     # TODO: Create functions to load the config files (#21122)
