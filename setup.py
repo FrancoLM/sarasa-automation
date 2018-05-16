@@ -13,6 +13,8 @@ setup(
     version='0.1.0a1',
 
     description='Slayer Framework... it came to SLAY!',
+    long_description=long_description,
+    long_description_content_type='text/x-rst',
 
     url='https://github.com/FrancoLM/slayer',
     author='Franco Martinez',  # Optional
