@@ -8,64 +8,16 @@ here = path.abspath(path.dirname(__file__))
 with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
-# Arguments marked as "Required" below must be included for upload to PyPI.
-# Fields marked as "Optional" may be commented out.
-
 setup(
-    # This is the name of your project. The first time you publish this
-    # package, this name will be registered for you. It will determine how
-    # users can install this project, e.g.:
-    #
-    # $ pip install sampleproject
-    #
-    # And where it will live on PyPI: https://pypi.org/project/sampleproject/
-    #
-    # There are some restrictions on what makes a valid project name
-    # specification here:
-    # https://packaging.python.org/specifications/core-metadata/#name
-    name='slayer',  # Required
+    name='slayer',
+    version='0.1.0',
 
-    # Versions should comply with PEP 440:
-    # https://www.python.org/dev/peps/pep-0440/
-    #
-    # For a discussion on single-sourcing the version across setup.py and the
-    # project code, see
-    # https://packaging.python.org/en/latest/single_source_version.html
-    version='0.1.0',  # Required
+    description='Slayer Framework... it came to SLAY!',
 
-    # This is a one-line description or tagline of what your project does. This
-    # corresponds to the "Summary" metadata field:
-    # https://packaging.python.org/specifications/core-metadata/#summary
-    description='Slayer Framework... it came to SLAY!',  # Required
-
-    # This is an optional longer description of your project that represents
-    # the body of text which users will see when they visit PyPI.
-    #
-    # Often, this is the same as your README, so you can just read it in from
-    # that file directly (as we have already done above)
-    #
-    # This field corresponds to the "Description" metadata field:
-    # https://packaging.python.org/specifications/core-metadata/#description-optional
-    #long_description = long_description,  # Optional
-
-    # This should be a valid link to your project's main homepage.
-    #
-    # This field corresponds to the "Home-Page" metadata field:
-    # https://packaging.python.org/specifications/core-metadata/#home-page-optional
-    url='https://github.com/FrancoLM/slayer',  # Optional
-
-    # This should be your name or the name of the organization which owns the
-    # project.
+    url='https://github.com/FrancoLM/slayer',
     author='Franco Martinez',  # Optional
+    author_email='martinez.franco.leonardo@gmail.com',
 
-    # This should be a valid email address corresponding to the author listed
-    # above.
-    author_email='martinez.franco.leonardo@gmail.com',  # Optional
-
-    # Classifiers help users find your project by categorizing it.
-    #
-    # For a list of valid classifiers, see
-    # https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[  # Optional
         # How mature is this project? Common values are
         #   3 - Alpha
@@ -73,92 +25,38 @@ setup(
         #   5 - Production/Stable
         'Development Status :: 3 - Alpha',
 
-        # Indicate who your project is intended for
         'Intended Audience :: Developers, QA Automation Engineers',
         'Topic :: Software Development :: QA Automation',
 
-        # Pick your license as you wish
         'License :: MIT',
-
-        # Specify the Python versions you support here. In particular, ensure
-        # that you indicate whether you support Python 2, Python 3 or both.
         'Programming Language :: Python :: 3.6'
     ],
-    license = "BSD",
+    license="BSD",
     keywords='slayer automation framework',  # Optional
-
-    # This field lists other packages that your project depends on to run.
-    # Any package you put here will be installed by pip when your project is
-    # installed, so they must be valid existing projects.
-    #
-    # For an analysis of "install_requires" vs pip's requirements files see:
-    # https://packaging.python.org/en/latest/requirements.html
     install_requires=[
-        "astroid>=1.6.3",
-        "attrs>=17.4.0",
-        "behave>=1.2.6",
-        "certifi>=2018.4.16",
-        "chardet>=3.0.4",
-        "colorama>=0.3.9",
-        "configobj>=5.0.6",
-        "idna>=2.6",
-        "isort>=4.3.4",
-        "lazy-object-proxy>=1.3.1",
-        "mccabe>=0.6.1",
-        "more-itertools>=4.1.0",
-        "parse>=1.8.2",
-        "parse-type>=0.4.2",
-        "pluggy>=0.6.0",
-        "py>=1.5.3",
-        "PyYAML>=3.12",
-        "requests>=2.18.4",
-        "selenium>=3.11.0",
-        "six>=1.11.0",
-        "urllib3>=1.22",
-        "wrapt>=1.10.1"
-    ],  # Optional
-
+        "astroid >= 1.6.3",
+        "attrs >= 17.4.0",
+        "behave >= 1.2.6",
+        "certifi >= 2018.4.16",
+        "chardet >= 3.0.4",
+        "colorama >= 0.3.9",
+        "configobj >= 5.0.6",
+        "idna >= 2.6",
+        "isort >= 4.3.4",
+        "lazy-object-proxy >= 1.3.1",
+        "mccabe >= 0.6.1",
+        "more-itertools >= 4.1.0",
+        "parse >= 1.8.2",
+        "parse-type >= 0.4.2",
+        "pluggy >= 0.6.0",
+        "py >= 1.5.3",
+        "PyYAML >= 3.12",
+        "requests >= 2.18.4",
+        "selenium >= 3.11.0",
+        "six >= 1.11.0",
+        "urllib3 >= 1.22",
+        "wrapt >= 1.10.1"
+    ],
     packages=find_packages(exclude=['contrib', 'docs', 'tests', 'output', 'deployment']),  # Required
-    #package_dir={'config': 'slayer/config'},
-    #package_data={  # Optional
-    #    'config': ['config/config.cfg'],
-    #},
     include_package_data=True,
-
-
-    # Although 'package_data' is the preferred approach, in some case you may
-    # need to place data files outside of your packages. See:
-    # http://docs.python.org/3.4/distutils/setupscript.html#installing-additional-files
-    #
-    # In this case, 'data_file' will be installed into '<sys.prefix>/my_data'
-    #data_files=[('my_data', ['data/data_file'])],  # Optional
-
-    # To provide executable scripts, use entry points in preference to the
-    # "scripts" keyword. Entry points provide cross-platform support and allow
-    # `pip` to create the appropriate form of executable for the target
-    # platform.
-    #
-    # For example, the following would provide a command called `sample` which
-    # executes the function `main` from this package when invoked:
-    #entry_points={  # Optional
-    #    'console_scripts': [
-    #        'sample=sample:main',
-    #    ],
-    #},
-
-    # List additional URLs that are relevant to your project as a dict.
-    #
-    # This field corresponds to the "Project-URL" metadata fields:
-    # https://packaging.python.org/specifications/core-metadata/#project-url-multiple-use
-    #
-    # Examples listed include a pattern for specifying where the package tracks
-    # issues, where the source is hosted, where to say thanks to the package
-    # maintainers, and where to support the project financially. The key is
-    # what's used to render the link text on PyPI.
-    #project_urls={  # Optional
-    #    'Bug Reports': 'https://github.com/pypa/sampleproject/issues',
-    #    'Funding': 'https://donate.pypi.org',
-    #    'Say Thanks!': 'http://saythanks.io/to/example',
-    #    'Source': 'https://github.com/pypa/sampleproject/',
-    #},
 )

@@ -1,28 +1,23 @@
-**Slayer Framework... It came to SLAY!**
+Slayer Framework... It came to SLAY!
+====================================
 
 Requirements:
+^^^^^^^^^^^^^
+
 - Python 3.x (Python >= 3.6 recommended)
-- virtualenv
-    You can follow this tutorial: http://docs.python-guide.org/en/latest/dev/virtualenvs/
-    Once you have Python and virutalenv installed, go to the directory you want your virtual environment to
-    be created and run:
-    > virtualenv my_project
-- You need to activate your virtualenv in order to install packages. In Windows, you need to run the script
-    > my_project\Scripts\activate.bat
-- You can use the requirements.txt file to install all dependencies in your virtual environment
-    > pip install -r my_project\deployment\requirements.txt
 
-
-######
-Web Automation
-- Make sure you have a webdriver downloaded in your system, and it's added to your PATH.
+For web automation, make sure you have a webdriver downloaded in your system, and it's added to your PATH.
 
 
 Running the Framework
+=====================
+.. code-block:: bash
+
+    pip install slayer
+
 Once installed:
 
-from slayer import run_framework
+.. code-block:: python
 
-run_framework()
-
-
+   from slayer import run_framework
+   run_framework()
