@@ -10,4 +10,4 @@ Slayer_Framework.egg-info/*
 dist/*
 slayer.egg-info/*
 build/*
-
+docs/_build/*
