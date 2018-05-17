@@ -10,6 +10,7 @@ class WikipediaPage(PageObject):
     page_title = (By.CLASS_NAME, "svg-Wikipedia_wordmark")
     search_bar = (By.ID, "searchInput")
     search_button = (By.XPATH, '//*[@id="search-form"]/fieldset/button')
+    search_result_title = (By.XPATH, '//*[@id="firstHeading"]')
 
     def __init__(self, web_driver):
         super().__init__(web_driver)
@@ -21,6 +22,10 @@ class WikipediaPage(PageObject):
         self.find_element(*self.search_bar).send_keys(query)
         self.find_element(*self.search_button).click()
         time.sleep(1)
+
+    def get_search_result_title(self):
+        return self.find_element(*self.search_result_title).text
+
 
 
 if __name__ == "__main__":

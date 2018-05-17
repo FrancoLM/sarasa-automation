@@ -10,9 +10,9 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='slayer',
-    version='0.1.0a1',
+    version='0.1.0a2',
 
-    description='Slayer Framework... it came to SLAY!',
+    description='Slayer... the QA Automation Framework that came to SLAY!',
     long_description=long_description,
     long_description_content_type='text/x-rst',
 
@@ -27,10 +27,10 @@ setup(
         #   5 - Production/Stable
         'Development Status :: 3 - Alpha',
 
-        'Intended Audience :: Developers, QA Automation Engineers',
-        'Topic :: Software Development :: QA Automation',
+        'Intended Audience :: Developers',
+        'Topic :: Software Development :: Quality Assurance',
 
-        'License :: MIT',
+        'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3.6'
     ],
     license="BSD",

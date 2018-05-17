@@ -20,3 +20,10 @@ Feature: Open Google
   @TAG_4
   Scenario: Test logging
     Given I test logging
+
+  @TAG_5
+  Scenario: My first Slayer test
+    Given I open a browser
+    Given I navigate to the Wikipedia page
+    When I search for the text 'Behavior Driven Development'
+    Then I see the page for 'Behavior-driven development'
