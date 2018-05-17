@@ -80,6 +80,7 @@ Let's go trough a simple example. Let's create a test that opens the Wikipedia w
 .. code-block:: python
 
    import logging
+   import time
    from selenium import webdriver
    from behave import step
    from wikipedia_page import WikipediaPage
