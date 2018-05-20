@@ -1,7 +1,7 @@
 from behave.__main__ import run_behave
 
 from slayer.slayer_configuration import set_behave_config
-from slayer_configuration import Slayer
+from slayer.slayer_configuration import Slayer
 
 
 def behave_executor(behave_config):

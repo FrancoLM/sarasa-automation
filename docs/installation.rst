@@ -51,10 +51,8 @@ Let's go trough a simple example. Let's create a test that opens the Wikipedia w
 
 * In your main script, import Slayer and run it:
 
-.. code-block:: python
-
-   from slayer import run_framework
-   run_framework()
+.. literalinclude:: ..\tutorial\run_slayer_script.py
+    :language: python
 
 
 And that's it! Slayer runs your test!
