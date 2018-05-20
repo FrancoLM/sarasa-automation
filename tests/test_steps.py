@@ -2,12 +2,11 @@ from argparse import Namespace
 
 import pytest
 import os
-
-from slayer_configuration import Slayer
-
+from slayer.slayer_configuration import Slayer
 
 # test -> can read custom config file and logger, and behave.ini
 # test -> can set environment variable
+
 
 @pytest.fixture
 def slayer():

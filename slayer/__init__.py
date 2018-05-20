@@ -1,1 +1,2 @@
 from slayer.run_framework import run_framework
+from slayer.slayer_configuration import Slayer
