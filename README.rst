@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/FrancoLM/slayer.svg?branch=master)](https://travis-ci.org/FrancoLM/slayer)
+[![Documentation Status](https://readthedocs.org/projects/slayer/badge/?version=latest)](http://slayer.readthedocs.io/en/latest/?badge=latest)
+
 Slayer is the QA Automation Framework that came to SLAY!
 --------------------------------------------------------
 
