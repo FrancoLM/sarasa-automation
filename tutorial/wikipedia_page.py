@@ -25,12 +25,3 @@ class WikipediaPage(PageObject):
 
     def get_search_result_title(self):
         return self.find_element(*self.search_result_title).text
-
-
-
-if __name__ == "__main__":
-    web_driver = webdriver.Chrome()
-    page = WikipediaPage(web_driver)
-    page.navigate()
-    page.search_for("Hello")
-    web_driver.close()

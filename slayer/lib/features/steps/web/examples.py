@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 import os
 
 from slayer.lib.common.decorators import dec_log_execution_time
-from tests.wikipedia_page import WikipediaPage
+from tutorial.wikipedia_page import WikipediaPage
 
 
 @step("I open a browser")
@@ -19,7 +19,7 @@ def step_impl(context, maximized=True):
 @step("I navigate to the Wikipedia page")
 def step_impl(context):
     context.wikipedia_page = WikipediaPage(context.driver)
-    logging.info("Navigating to the WIkipedia page")
+    logging.info("Navigating to the Wikipedia page")
     context.wikipedia_page.navigate()
 
 
@@ -30,7 +30,7 @@ def step_impl(context, search_text):
     time.sleep(1)
 
 
-@step("I see the page for '{page_title}'")
+@step("I see in the page '{page_title}'")
 def step_impl(context, page_title):
     assert context.wikipedia_page.get_search_result_title() == page_title
 

@@ -16,9 +16,9 @@ handlers:
     stream: ext://sys.stdout
   file:
     class: logging.FileHandler
-    level: DEBUG
+    level: INFO
     formatter: basic
-    # FIXME: log file should go to output.
+    # FIXME: log filename should go to output.
     filename: slayer.log
     mode: w
     encoding: utf-8

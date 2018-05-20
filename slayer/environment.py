@@ -1,7 +1,6 @@
 """Environment file for behave
 Selenium grid may be set here too"""
 import logging
-from slayer.slayer_configuration import configure_logging
 
 LINE_LENGTH = 42
 PASSED = "passed"
@@ -10,7 +9,8 @@ FAILED = "failed"
 def before_all(context):
     # Setup logging for SLAYER, according to behave API reference:
     # http://python-behave.readthedocs.io/en/latest/api.html#logging-setup
-    configure_logging(context)
+    # configure_logging()
+    pass
 
 
 def after_all(context):
@@ -18,6 +18,8 @@ def after_all(context):
     scenarios = []
     for feature in context._runner.features:
         scenarios += feature.scenarios
+    # Scenario.duration is the execution time
+    # step.duration is the execution time for each step
     logging.info("PASSED Scenarios:")
     [logging.info("\t" + scenario.name) for scenario in scenarios if scenario.status.name == PASSED]
     logging.info("FAILED Scenarios:")

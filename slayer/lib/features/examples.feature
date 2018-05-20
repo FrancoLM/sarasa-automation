@@ -22,8 +22,13 @@ Feature: Open Google
     Given I test logging
 
   @TAG_5
-  Scenario: My first Slayer test
+  Scenario Outline: My first Slayer test
     Given I open a browser
-    Given I navigate to the Wikipedia page
-    When I search for the text 'Behavior Driven Development'
-    Then I see the page for 'Behavior-driven development'
+    And I navigate to the Wikipedia page
+    When I search for the text '<search_query>'
+    Then I see in the page '<search_result>'
+    Examples:
+      | search_query                | search_result                 |
+      | Python language             | Python (programming language) |
+      | Behavior Driven Development | Behavior-driven development   |
+

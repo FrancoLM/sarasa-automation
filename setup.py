@@ -17,11 +17,11 @@ setup(
     long_description_content_type='text/x-rst',
 
     url='https://github.com/FrancoLM/slayer',
-    author='Franco Martinez',  # Optional
+    author='Franco Martinez',
     author_email='martinez.franco.leonardo@gmail.com',
 
-    classifiers=[  # Optional
-        # How mature is this project? Common values are
+    classifiers=[
+        # How mature is this project?
         #   3 - Alpha
         #   4 - Beta
         #   5 - Production/Stable
@@ -36,29 +36,20 @@ setup(
     license="BSD",
     keywords='slayer automation framework',  # Optional
     install_requires=[
-        "astroid >= 1.6.3",
-        "attrs >= 17.4.0",
         "behave >= 1.2.6",
         "certifi >= 2018.4.16",
         "chardet >= 3.0.4",
-        "colorama >= 0.3.9",
         "configobj >= 5.0.6",
+        "future >= 0.16.0",
         "idna >= 2.6",
-        "isort >= 4.3.4",
-        "lazy-object-proxy >= 1.3.1",
-        "mccabe >= 0.6.1",
-        "more-itertools >= 4.1.0",
         "parse >= 1.8.2",
         "parse-type >= 0.4.2",
-        "pluggy >= 0.6.0",
-        "py >= 1.5.3",
         "PyYAML >= 3.12",
         "requests >= 2.18.4",
         "selenium >= 3.11.0",
         "six >= 1.11.0",
         "urllib3 >= 1.22",
-        "wrapt >= 1.10.1"
     ],
-    packages=find_packages(exclude=['contrib', 'docs', 'tests', 'output', 'deployment']),  # Required
+    packages=find_packages(exclude=['contrib', 'docs', 'tests', 'output', 'deployment', 'tutorial']),  # Required
     include_package_data=True,
 )
