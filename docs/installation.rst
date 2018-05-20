@@ -33,25 +33,25 @@ Let's go trough a simple example. Let's create a test that opens the Wikipedia w
 * Install the Chrome webdriver
 * Create a WikipediaPage class, that we'll use to automate our test. In the root of your project create a Python script "wikipedia_page.py":
 
-.. literalinclude:: ..\tutorial\wikipedia_page.py
+.. literalinclude:: ../tutorial/wikipedia_page.py
     :language: python
 
 
 * Add a new directory called "features" in your root, and create a file "wikipedia.feature", and paste the following:
 
-.. literalinclude:: ..\tutorial\wikipedia.feature
+.. literalinclude:: ../tutorial/wikipedia.feature
     :language: gherkin
 
 
 * Add a new directory "steps" inside "features", and create a Python script "tutorial_steps.py":
 
-.. literalinclude:: ..\tutorial\tutorial_steps.py
+.. literalinclude:: ../tutorial/tutorial_steps.py
     :language: python
 
 
 * In your main script, import Slayer and run it:
 
-.. literalinclude:: ..\tutorial\run_slayer_script.py
+.. literalinclude:: ../tutorial/run_slayer_script.py
     :language: python
 
 
