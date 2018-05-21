@@ -10,7 +10,7 @@ def behave_executor(behave_config):
 
 
 def run_framework():
-    """Sets all settings for executing Slayer.
+    """Sets all the settings required for executing Slayer.
 
     - Configures the necessary environment variables
     -- logger
@@ -25,13 +25,15 @@ def run_framework():
     slayer_framework.configure_environment()
     slayer_framework.set_slayer_environment_variables()
     slayer_framework.create_output_folders()
-    #clean_output_folder()
+    #clean_output_folders()
 
     # Read the Behave config file and customize it for SLAYER
     behave_config = set_behave_config()
-    # configure_logging()
-    # Run tests with the behave executor
+    # configure logging for Slayer. This step needs to be executed after creating the behave config object since
+    # Slayer overrides some of the settings behave sets for logging
     slayer_framework.configure_logging()
+
+    # Run tests with the behave executor
     behave_executor(behave_config)
     # TODO: Reporter Factory
     # generate_report()

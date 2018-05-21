@@ -1,8 +1,8 @@
 Installing Slayer
 =================
 
-Requirements:
-^^^^^^^^^^^^^
+Requirements
+^^^^^^^^^^^^
 
 * Python 3.x (Python >= 3.6 recommended)
 * For web automation, make sure you have a webdriver downloaded in your system, and it's added to your PATH (Windows).
@@ -14,50 +14,20 @@ this project is used in Slayer. Refer to their documentation for more informatio
 
 Installing the Framework
 ^^^^^^^^^^^^^^^^^^^^^^^^
+
+Slayer can be installed either as a library or cloned from the source code.
+
+
+If you want to use the latest stable version, the library would be your best option.
+
 .. code-block:: bash
 
     pip install slayer
 
 
-Running the Framework
-^^^^^^^^^^^^^^^^^^^^^
+If you want get the latest version, then install Slayer from the github repository.
 
-Slayer, very much like the Behave Python library it's based on, will look for a folder called "features" and a
-"steps" sub-folder inside it for feature files and the steps implementation, respectively.
-You can consult the `Behave documentation <http://behave.readthedocs.io/en/latest/>`_ for more information.
+.. code-block:: bash
 
-Let's go trough a simple example. Let's create a test that opens the Wikipedia webpage and searches for the term
-"Behavior Driven Development"
+    pip install git+https://github.com/FrancoLM/slayer
 
-* Import Slayer in your project
-* Install the Chrome webdriver
-* Create a WikipediaPage class, that we'll use to automate our test. In the root of your project create a Python script "wikipedia_page.py":
-
-.. literalinclude:: ../tutorial/wikipedia_page.py
-    :language: python
-
-
-* Add a new directory called "features" in your root, and create a file "wikipedia.feature", and paste the following:
-
-.. literalinclude:: ../tutorial/wikipedia.feature
-    :language: gherkin
-
-
-* Add a new directory "steps" inside "features", and create a Python script "tutorial_steps.py":
-
-.. literalinclude:: ../tutorial/tutorial_steps.py
-    :language: python
-
-
-* In your main script, import Slayer and run it:
-
-.. literalinclude:: ../tutorial/run_slayer_script.py
-    :language: python
-
-
-And that's it! Slayer runs your test!
-You will find the output for the execution inside the "output" folder that Slayer creates automatically.
-
-Modifying the Slayer execution
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-In progress

@@ -19,9 +19,10 @@ class Slayer(object):
         self.arguments = None
 
     @classmethod
-    def print_banner(self):
-        print("SLAYER FRAMEWORK".center(35, "-"))
-        print("-" * 35)
+    def print_banner(cls):
+        """Prints the SLayer Banner in console"""
+        print("SLAYER FRAMEWORK".center(38, "-"))
+        print("-" * 38)
 
     def configure_environment(self):
         """Reads the arguments passed to the execution of Slayer."""
@@ -45,15 +46,14 @@ class Slayer(object):
                             default='')
         default_args, other_args = parser.parse_known_args()
         self.arguments = default_args
-        # self.set_slayer_environment_variables(default_args)
 
         # Remove the custom parameters from sys.argv
         sys.argv = sys.argv[:1] + other_args
-        # Set env variables from the config file (--framework-config)
 
     def set_slayer_environment_variables(self):
-        """Set the value for all the Slayer-related environment variables"""
+        """Sets the value for all the Slayer-related environment variables"""
         args = self.arguments
+
         # Set the environment SLAYER_ROOT to the path where the main script is executed. This is to provide
         # SLayer with the ability of using custom config and feature files
         self.variables["SLAYER_ROOT"] = self.set_new_environment_variable("SLAYER_ROOT", os.getcwd())
@@ -66,8 +66,6 @@ class Slayer(object):
 
         app_data = os.path.join(os.getenv("SLAYER_ROOT"), args.behave_config)
         self.variables["APPDATA"] = self.set_new_environment_variable("APPDATA", app_data)
-
-
 
         # Get the configuration options from the Slayer config file
         cfg = get_slayer_configuration()
@@ -86,14 +84,9 @@ class Slayer(object):
         self.variables["HTTPS_PROXY"] = self.set_new_environment_variable("HTTPS_PROXY", proxy["https_proxy"])
         self.variables["NO_PROXY"] = self.set_new_environment_variable("NO_PROXY", proxy["no_proxy"])
 
-    def clean_output_folders(self):
-        """Clean the output folder, where the logs and results of the execution are stored."""
-        pass
-        # TODO: Not Implemented
-
     @classmethod
     def set_new_environment_variable(cls, name, value, print_to_console=True):
-        """Create a new environment variable.
+        """Creates a new environment variable.
 
         Keyword arguments:
         name -- the name of the new environment variable
@@ -110,15 +103,21 @@ class Slayer(object):
             raise
 
     def create_output_folders(self):
+        """Creates the folders where the output artifacts and logs will be stored after executing Slayer"""
         output_folder = self.variables["SLAYER_OUTPUT_DIR"]
         logs_folder = self.variables["SLAYER_LOGS_DIR"]
         for folder in (output_folder, logs_folder):
             if not os.path.isdir(folder):
                 os.makedirs(folder)
 
+    def clean_output_folders(self):
+        """Clean the output folder, where the logs and results of the execution are stored."""
+        # TODO: Not Implemented
+        pass
+
     @classmethod
     def configure_logging(cls):
-        """Read the logger configuration file and set the logger for Slayer.
+        """Reads the logger configuration file and set the logger for Slayer.
 
         Function sets all config-related settings, like log-level and format. If the config file cannot be found,
         then the default logger file is used
@@ -138,7 +137,9 @@ class Slayer(object):
 
 
 def get_slayer_configuration():
-    """Get the Slayer configuration, an object with all the settings for running Slayer."""
+    """Get the Slayer configuration, an object with all the settings for running Slayer.
+
+    The Slayer configuration is stored in a global variable, and allows to modify the execution of Slayer."""
     global SLAYER_CONFIG
     if SLAYER_CONFIG is None:
         config_path = os.getenv("SLAYER_CONFIG")

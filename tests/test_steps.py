@@ -2,14 +2,17 @@ import pytest
 import os
 from ..slayer.slayer_configuration import Slayer
 
+
 # test -> can read custom config file and logger, and behave.ini
 # test -> can set environment variable
+# test -> proxy
 
 
 @pytest.fixture
 def slayer():
     slayer = Slayer()
     return slayer
+
 
 def test_set_new_environment_variable(slayer):
     variable_name = "test_variable"
