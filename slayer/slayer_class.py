@@ -6,7 +6,7 @@ from argparse import ArgumentParser
 import yaml
 from yaml.scanner import ScannerError
 
-from slayer_configuration import get_slayer_configuration
+from .slayer_configuration import get_slayer_configuration
 
 
 class Slayer(object):
