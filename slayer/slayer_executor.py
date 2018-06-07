@@ -1,7 +1,7 @@
 from behave.__main__ import run_behave
 
-from slayer.slayer_configuration import set_behave_config
-from slayer.slayer_configuration import Slayer
+from slayer_class import Slayer
+from slayer_configuration import set_behave_arguments
 
 
 def behave_executor(behave_config):
@@ -22,13 +22,13 @@ def run_framework():
     slayer_framework.print_banner()
 
     # Set env variables and paths
-    slayer_framework.configure_environment()
+    slayer_framework.set_arguments_from_command_line()
     slayer_framework.set_slayer_environment_variables()
     slayer_framework.create_output_folders()
     #clean_output_folders()
 
     # Read the Behave config file and customize it for SLAYER
-    behave_config = set_behave_config()
+    behave_config = set_behave_arguments()
     # configure logging for Slayer. This step needs to be executed after creating the behave config object since
     # Slayer overrides some of the settings behave sets for logging
     slayer_framework.configure_logging()
