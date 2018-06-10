@@ -8,9 +8,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 
 class PageObject(object):
-    """Base class for Page objects for web-based applications"""
+    """Base class for Page objects for web_1-based applications"""
 
     url = None
+
     # TODO: Handle StaleElementException problems
     # TODO: Find elements. Wait until elem is not present
     def __init__(self, web_driver, timeout=30):

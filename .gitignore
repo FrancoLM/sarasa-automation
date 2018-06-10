@@ -11,3 +11,4 @@ dist/*
 slayer.egg-info/*
 build/*
 docs/_build/*
+features/*

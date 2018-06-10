@@ -24,6 +24,7 @@ def after_all(context):
     [logging.info("\t" + scenario.name) for scenario in scenarios if scenario.status.name == PASSED]
     logging.info("FAILED Scenarios:")
     [logging.info("\t" + scenario.name) for scenario in scenarios if scenario.status.name == FAILED]
+    logging.info("")
     logging.info("SLAYER EXECUTION FINISHED")
 
 
@@ -56,7 +57,7 @@ def after_scenario(context, scenario):
 
 
 def before_step(context, step):
-    logging.info("Step: '{}' {:>50}".format(step.name, "# {}:{}".format(step.location.filename, step.location.line)))
+    logging.info("Step: '{}'   {}".format(step.name, "# {}:{}".format(step.location.filename, step.location.line)))
 
 
 def after_step(context, step):

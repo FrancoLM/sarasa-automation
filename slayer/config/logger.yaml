@@ -11,12 +11,12 @@ formatters:
 handlers:
   console:
     class: logging.StreamHandler
-    level: INFO
+    level: DEBUG
     formatter: in_console
     stream: ext://sys.stdout
   file:
     class: logging.FileHandler
-    level: INFO
+    level: DEBUG
     formatter: basic
     # FIXME: log filename should go to output.
     filename: slayer.log

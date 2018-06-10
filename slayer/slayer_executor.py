@@ -1,12 +1,5 @@
-from behave.__main__ import run_behave
-
-from slayer_class import Slayer
-from slayer_configuration import set_behave_arguments
-
-
-def behave_executor(behave_config):
-    """Calls the Behave executor to run the scenarios"""
-    run_behave(behave_config)
+from behave_executor import BehaveExecutor
+from slayer_runner import SlayerRunner
 
 
 def run_framework():
@@ -18,23 +11,24 @@ def run_framework():
     -- Slayer report
     - Sets Behave-specific variables, like the paths where the feature files will be located and tags to run
     - Calls the behave executor"""
-    slayer_framework = Slayer()
-    slayer_framework.print_banner()
+    slayer_runner = SlayerRunner()
+    slayer_runner.print_banner()
 
-    # Set env variables and paths
-    slayer_framework.set_arguments_from_command_line()
-    slayer_framework.set_slayer_environment_variables()
-    slayer_framework.create_output_folders()
-    #clean_output_folders()
+    slayer_runner.parse_slayer_arguments()
+    slayer_runner.set_environment_variables()
 
-    # Read the Behave config file and customize it for SLAYER
-    behave_config = set_behave_arguments()
-    # configure logging for Slayer. This step needs to be executed after creating the behave config object since
-    # Slayer overrides some of the settings behave sets for logging
-    slayer_framework.configure_logging()
+    slayer_runner.cleanup_output_folder()
 
-    # Run tests with the behave executor
-    behave_executor(behave_config)
+    behave_executor = BehaveExecutor()
+    behave_executor.create_behave_config()
+    behave_executor.parse_behave_arguments()
+
+    # configure execution for Slayer. This step needs to be executed after creating the behave config object since
+    # Slayer overrides some of the settings behave sets when importing the library
+    slayer_runner.configure_execution()
+
+    behave_executor.import_steps_directories()
+    behave_executor.call_executor()
     # TODO: Reporter Factory
     # generate_report()
 
