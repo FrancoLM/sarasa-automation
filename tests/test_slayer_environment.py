@@ -1,7 +1,7 @@
 import pytest
 import os
 
-from slayer.slayer_runner import SlayerRunner
+from slayer_runner import SlayerRunner
 
 
 @pytest.fixture

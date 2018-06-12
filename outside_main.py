@@ -1,4 +1,4 @@
-from slayer.run_framework import run_framework
+from slayer.main import run_framework
 
 if __name__ == "__main__":
     run_framework()
