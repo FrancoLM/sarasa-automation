@@ -46,7 +46,6 @@ setup(
         "parse-type >= 0.4.2",
         "PyYAML >= 3.12",
         "requests >= 2.18.4",
-        "selenium >= 3.11.0",
         "six >= 1.11.0",
         "urllib3 >= 1.22",
     ],

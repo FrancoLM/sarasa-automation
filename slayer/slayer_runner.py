@@ -8,6 +8,7 @@ import yaml
 from yaml.scanner import ScannerError
 
 from slayer.slayer_configuration import get_slayer_configuration
+from slayer.slayer_logger import SysStdoutLogger
 
 
 class SlayerRunner(object):
@@ -18,12 +19,25 @@ class SlayerRunner(object):
         self.arguments = None
 
     @classmethod
-    def print_banner(cls):
+    def log_banner(cls):
         """Prints the SLayer Banner in console"""
         print("SLAYER FRAMEWORK".center(38, "-"))
         print("-" * 38)
 
-    def set_new_environment_variable(self, name, value, print_to_console=True):
+    @classmethod
+    def print_variable_name_and_value(cls, name, value):
+        print("{var_name:<18} ==> {var_value}".format(var_name=name, var_value=value))
+
+    @classmethod
+    def configure_stdout(cls):
+        sys.stdout = SysStdoutLogger()
+
+    def log_environment_variables(self):
+        for name, value in self.variables.items():
+            if value:
+                self.print_variable_name_and_value(name, value)
+
+    def set_new_environment_variable(self, name, value, print_to_console=False):
         """Creates a new environment variable and stores it in the variables attribute.
 
         Keyword arguments:
@@ -35,7 +49,7 @@ class SlayerRunner(object):
             os.environ[name] = value
             self.variables[name] = value
             if print_to_console:
-                print("{var_name:>15} ==> {var_value}".format(var_name=name, var_value=value))
+                self.print_variable_name_and_value(name, value)
             return self.variables[name]
         except TypeError:
             print("ERROR. Environment variable {} could not be set!".format(name))
