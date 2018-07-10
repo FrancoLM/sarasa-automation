@@ -17,11 +17,16 @@ def run_framework():
     -- Slayer report
     - Sets Behave-specific variables, like the paths where the feature files will be located and tags to run
     - Calls the behave executor"""
-    slayer_runner = SlayerRunner()
-    slayer_runner.print_banner()
 
+    slayer_runner = SlayerRunner()
     slayer_runner.parse_slayer_arguments()
     slayer_runner.set_environment_variables()
+
+    # Duplicate stdout to the slayer logger file
+    slayer_runner.configure_stdout()
+
+    slayer_runner.log_banner()
+    slayer_runner.log_environment_variables()
 
     slayer_runner.cleanup_output_folder()
 

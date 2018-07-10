@@ -6,7 +6,7 @@ formatters:
     format: '%(asctime)s %(levelname)-8s %(message)s'
     datefmt: '%Y-%m-%d %H:%M:%S'
   in_console:
-    format: '        %(asctime)s: %(name)-6s %(levelname)-8s %(message)s'
+    format: '      %(asctime)s: %(levelname)-8s %(message)s'
     datefmt: '%Y-%m-%d %H:%M:%S'
 handlers:
   console:
@@ -18,7 +18,6 @@ handlers:
     class: logging.FileHandler
     level: DEBUG
     formatter: basic
-    # FIXME: log filename should go to output.
     filename: slayer.log
     mode: w
     encoding: utf-8
