@@ -11,6 +11,15 @@ Slayer is the QA Automation Framework that came to SLAY!
 
 Slayer is a QA Automation Framework developed in Python, based on BDD.
 
+
+Why use Slayer?
+---------------
+
+- Easy-to-read logging: Each scenario and each step is logged, and also you can add logging to each step
+- Framework architecture versatility: Slayer supports the creation of multiple features and steps directory levels
+- Slayer was created using open-source tools, so you can modify it's behavior in any way you need
+
+
 BDD, or Behavior Driven Development, is a software development process emerged from Test Driven Development (TDD).
 
 Besides following the practices of TDD, BDD provides an easy-to-understand vocabulary for developers and stakeholders.
