@@ -10,7 +10,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='slayer',
-    version='0.1.0a3',
+    version='0.1.0a5',
 
     description='Slayer... the QA Automation Framework that came to SLAY!',
     long_description=long_description,
