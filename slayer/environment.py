@@ -1,5 +1,6 @@
 """Environment file for behave
-Selenium grid may be set here too"""
+Selenium grid may be set here too.
+TODO: This is deactivated for Alpha-5"""
 import logging
 
 LINE_LENGTH = 42
