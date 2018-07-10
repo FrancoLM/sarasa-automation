@@ -23,7 +23,7 @@ def run_framework():
     slayer_runner.set_environment_variables()
 
     # Duplicate stdout to the slayer logger file
-    slayer_runner.configure_stdout()
+    slayer_runner.configure_stdout_logger()
 
     slayer_runner.log_banner()
     slayer_runner.log_environment_variables()

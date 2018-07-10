@@ -1,5 +1,5 @@
 import sys
-
+import os
 
 class SysStdoutLogger(object):
     """sys.stdout logger class
@@ -8,9 +8,9 @@ class SysStdoutLogger(object):
     the behave and slayer logs.
     This class is meant to overwrite the sys.stdout output"""
 
-    def __init__(self, filename="slayer.log"):
+    def __init__(self, path, filename="slayer.log"):
         self.terminal = sys.stdout
-        self.log = open(filename, "w")
+        self.log = open(os.path.join(path, filename), "w")
 
     def __getattr__(self, attr):
         return getattr(self.terminal, attr)

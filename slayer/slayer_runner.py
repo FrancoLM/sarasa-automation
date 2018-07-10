@@ -12,7 +12,7 @@ from slayer.slayer_logger import SysStdoutLogger
 
 
 class SlayerRunner(object):
-    """Slayer framework object."""
+    """Slayer framework object"""
 
     def __init__(self):
         self.variables = {}
@@ -20,19 +20,21 @@ class SlayerRunner(object):
 
     @classmethod
     def log_banner(cls):
-        """Prints the SLayer Banner in console"""
+        """Prints the Slayer Banner in console"""
         print("SLAYER FRAMEWORK".center(38, "-"))
         print("-" * 38)
 
     @classmethod
     def print_variable_name_and_value(cls, name, value):
+        """Prints variables in the execution console"""
         print("{var_name:<18} ==> {var_value}".format(var_name=name, var_value=value))
 
-    @classmethod
-    def configure_stdout(cls):
-        sys.stdout = SysStdoutLogger()
+    def configure_stdout_logger(self):
+        """Configures the sys.stdout output in order to replicate the console output to a file"""
+        sys.stdout = SysStdoutLogger(self.variables["SLAYER_LOGS_DIR"])
 
     def log_environment_variables(self):
+        """Prints the SLayer environment variables to console"""
         for name, value in self.variables.items():
             if value:
                 self.print_variable_name_and_value(name, value)
@@ -43,7 +45,7 @@ class SlayerRunner(object):
         Keyword arguments:
         name -- the name of the new environment variable
         value -- the value it will be assigned
-        print_to_console -- whether to print the variable in the console (default True)
+        print_to_console -- whether to print the variable in the console (default False)
         """
         try:
             os.environ[name] = value

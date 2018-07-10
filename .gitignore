@@ -12,3 +12,5 @@ slayer.egg-info/*
 build/*
 docs/_build/*
 features/*
+slayer/features/*
+
