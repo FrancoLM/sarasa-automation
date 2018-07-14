@@ -26,9 +26,7 @@ class BehaveExecutor(object):
 
     def create_behave_config(self):
         self.behave_config = BehaveConfig(sys.argv[1:])
-        # TODO: Remove reference to environment.py
-        # self.behave_config.environment_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "environment.py")
-        # TODO: Create functions to load the config files (#21122)
+        # TODO: Create functions to load the config files
         # cfg.environment_file = # Configurable by user
 
     def call_executor(self):

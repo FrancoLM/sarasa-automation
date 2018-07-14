@@ -8,7 +8,7 @@ class SysStdoutLogger(object):
     the behave and slayer logs.
     This class is meant to overwrite the sys.stdout output"""
 
-    def __init__(self, path, filename="slayer.log"):
+    def __init__(self, path, filename="output.log"):
         self.terminal = sys.stdout
         self.log = open(os.path.join(path, filename), "w")
 
