@@ -34,6 +34,8 @@ def run_framework(framework_name="SLAYER"):
 
     slayer_runner.cleanup_output_folder()
 
+    # FIXME: Mention in doc that adding logging in the environment.py file could mess up the logging (for the before_all
+    # FIXME: especially. Maybe a new logger could be added....
     behave_executor = BehaveExecutor()
     behave_executor.create_behave_config()
     behave_executor.parse_behave_arguments()

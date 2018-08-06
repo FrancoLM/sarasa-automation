@@ -162,7 +162,7 @@ class SlayerRunner(object):
             with open(self.variables["LOGS_CONFIG"], 'r') as f:
                 log_config = yaml.safe_load(f.read())
             if "filename" in log_config["handlers"]["file"].keys():
-                filename = log_config["handlers"]["file"]["filename"]
+                filename = self.arguments.log_filename or log_config["handlers"]["file"]["filename"]
                 log_config["handlers"]["file"]["filename"] = os.path.join(os.getenv("FWK_LOGS_DIR"), filename)
             logging.config.dictConfig(log_config)
         except KeyError:

@@ -11,9 +11,14 @@ formatters:
 handlers:
   console:
     class: logging.StreamHandler
-    level: DEBUG
+    level: INFO
     formatter: in_console
     stream: ext://sys.stdout
+  error_console:
+    class: logging.StreamHandler
+    level: WARN
+    formatter: in_console
+    stream: ext://sys.stderr
   file:
     class: logging.FileHandler
     level: DEBUG
@@ -24,4 +29,4 @@ handlers:
 root:
   level: DEBUG
   propagate: False
-  handlers: [console, file]
+  handlers: [console, error_console, file]
