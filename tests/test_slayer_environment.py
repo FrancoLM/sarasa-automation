@@ -6,7 +6,7 @@ from slayer.slayer_runner import SlayerRunner
 
 @pytest.fixture
 def slayer_fwk():
-    slayer = SlayerRunner()
+    slayer = SlayerRunner(framework_name="TESTING")
     return slayer
 
 
