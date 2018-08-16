@@ -124,6 +124,9 @@ class SlayerRunner(object):
         slayer_logs_dir = os.path.join(self.variables["FWK_OUTPUT_DIR"], slayer_cfg["logs"]["path"])
         self.set_new_environment_variable("FWK_LOGS_DIR", slayer_logs_dir)
 
+        slayer_screenshots_dir = os.path.join(self.variables["FWK_OUTPUT_DIR"], slayer_cfg["screenshots"]["path"])
+        self.set_new_environment_variable("FWK_SCREENSHOTS_DIR", slayer_screenshots_dir)
+
         slayer_log_filename = args.log_filename
         self.set_new_environment_variable("FWK_LOG_FILENAME", slayer_log_filename)
 

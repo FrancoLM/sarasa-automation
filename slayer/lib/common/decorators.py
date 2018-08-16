@@ -16,6 +16,42 @@ def dec_log_execution_time(method):
 
     return timed_function
 
+def retry_until_not_none(retries=3, delay=1):
+    """Retries a function or method until it returns different than None
+
+    delay sets the initial delay in seconds, and backoff sets the factor by which
+    the delay should lengthen after each failure. backoff must be greater or equal ot 1.
+    tries must be at least 0, and delay
+    greater than 0."""
+
+    retries = math.floor(retries)
+    if retries < 0:
+        raise ValueError("tries must be 0 or greater")
+    if delay <= 0:
+        raise ValueError("delay must be greater than 0")
+
+    def deco_retry(f):
+        def f_retry(*args, **kwargs):
+            mtries, mdelay = retries, delay  # make mutable
+            retry_value = None
+            while mtries > 0:
+                try:
+                    retry_value = f(*args, **kwargs)  # Do an attempt
+                    if retry_value is not None:
+                        return retry_value
+                    else:
+                        # TODO: Change exception
+                        raise Exception("Couldn't get the element")
+                except:
+                    mtries -= 1  # consume an attempt
+                    if mtries > 0:
+                        logging.debug("Retrying...")
+                    time.sleep(mdelay)  # wait...
+            return retry_value  # Ran out of tries
+        return f_retry  # true decorator -> decorated function
+    return deco_retry  # @retry(arg[, ...]) -> true decorator
+
+
 
 def dec_retry_bool_function(retries, wait=3, backoff=2):
     """Retries a function or method until it returns True.
@@ -30,7 +66,6 @@ def dec_retry_bool_function(retries, wait=3, backoff=2):
     tries = math.floor(retries)
     if tries < 0:
         raise ValueError("tries must be 0 or greater")
-
     if wait <= 0:
         raise ValueError("delay must be greater than 0")
 
@@ -42,16 +77,13 @@ def dec_retry_bool_function(retries, wait=3, backoff=2):
             while mtries > 0:
                 if function_value is True:  # Done on success
                     return True
-                logging.info("-----Retrying function...------")
+                logging.debug("Retrying...")
                 mtries -= 1
                 time.sleep(mdelay)
                 mdelay *= backoff
-
                 function_value = f(*args, **kwargs)  # Try again
             return False  # Ran out of tries
-
         return function_retry  # true decorator -> decorated function
-
     return deco_retry  # @retry(arg[, ...]) -> true decorator
 
 
