@@ -22,6 +22,8 @@ def run_framework(framework_name="SLAYER"):
     slayer_runner.parse_slayer_arguments()
     slayer_runner.set_environment_variables()
 
+    slayer_runner.cleanup_output_folder()
+
     # Duplicate stdout to the slayer logger file
     slayer_runner.configure_stdout_logger()
 
@@ -32,7 +34,7 @@ def run_framework(framework_name="SLAYER"):
     # FIXME: Add variable for not printing the banner
     slayer_runner.log_slayer_information()
 
-    slayer_runner.cleanup_output_folder()
+
 
     # FIXME: Mention in doc that adding logging in the environment.py file could mess up the logging (for the before_all
     # FIXME: especially. Maybe a new logger could be added....
