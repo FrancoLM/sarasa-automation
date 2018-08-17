@@ -21,12 +21,12 @@ handlers:
     stream: ext://sys.stderr
   file:
     class: logging.FileHandler
-    level: DEBUG
+    level: INFO
     formatter: basic
     filename: output.log
     mode: w
     encoding: utf-8
 root:
-  level: DEBUG
+  level: INFO
   propagate: False
   handlers: [console, error_console, file]

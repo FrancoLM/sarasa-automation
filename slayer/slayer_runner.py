@@ -124,8 +124,8 @@ class SlayerRunner(object):
         slayer_logs_dir = os.path.join(self.variables["FWK_OUTPUT_DIR"], slayer_cfg["logs"]["path"])
         self.set_new_environment_variable("FWK_LOGS_DIR", slayer_logs_dir)
 
-        slayer_screenshots_dir = os.path.join(self.variables["FWK_OUTPUT_DIR"], slayer_cfg["screenshots"]["path"])
-        self.set_new_environment_variable("FWK_SCREENSHOTS_DIR", slayer_screenshots_dir)
+        slayer_screenshots_dir = os.path.join(self.variables["FWK_OUTPUT_DIR"], slayer_cfg["artifacts"]["path"])
+        self.set_new_environment_variable("FWK_ARTIFACTS_DIR", slayer_screenshots_dir)
 
         slayer_log_filename = args.log_filename
         self.set_new_environment_variable("FWK_LOG_FILENAME", slayer_log_filename)
@@ -144,7 +144,8 @@ class SlayerRunner(object):
         self.delete_output_folders()
         output_folder = self.variables["FWK_OUTPUT_DIR"]
         logs_folder = self.variables["FWK_LOGS_DIR"]
-        for folder in (output_folder, logs_folder):
+        artifacts_folder = self.variables["FWK_ARTIFACTS_DIR"]
+        for folder in (output_folder, logs_folder, artifacts_folder):
             if not os.path.isdir(folder):
                 os.makedirs(folder)
 
