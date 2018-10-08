@@ -1,16 +1,16 @@
 import requests
 
 REQUESTS_METHODS = {
-    "GET":      requests.get,
-    "POST":     requests.post,
-    "PUT":      requests.put,
-    "PATCH":    requests.patch,
-    "DELETE":   requests.delete,
+    "GET": requests.get,
+    "POST": requests.post,
+    "PUT": requests.put,
+    "PATCH": requests.patch,
+    "DELETE": requests.delete,
 }
 
 
 class RESTClient(object):
-    def __init__(self, base_urn, port, protocol="https"):
+    def __init__(self, base_urn, port, protocol="http"):
         self._base_urn = base_urn
         self._port = port
         self._protocol = protocol
@@ -21,14 +21,21 @@ class RESTClient(object):
         self._username = self._password = None
 
     def set_api_endpoint(self, endpoint):
-        """Set the endpoint for the API"""
+        """Sets the endpoint for the API"""
         self._api_endpoint = "%s/%s" % (self.base_url, endpoint)
 
     def get_api_endpoint(self):
+        """Returns the configured API endpoint"""
         return self._api_endpoint
 
-    def set_auth_basic(self, username, password):
+    def set_authentication_basic(self, username, password):
+        """Sets default authentication (username, password)"""
         self._auth = requests.auth.HTTPBasicAuth(username, password)
+        self._username = username
+        self._password = password
+
+    def set_authentication_digest(self, username, password):
+        self._auth = requests.auth.HTTPDigestAuth(username, password)
         self._username = username
         self._password = password
 
@@ -48,7 +55,7 @@ class RESTClient(object):
 
 if __name__ == "__main__":
     # TODO: Delete
-    """Small tests to tests if it works. To delete in the future"""
+    """Small tests to see if the client works. To delete in the future"""
     rest_client = RESTClient("jsonplaceholder.typicode.com", 443)
     rest_client.set_api_endpoint("posts")
     request_response = rest_client.send_request("GET")

@@ -14,14 +14,15 @@ class PageObject(object):
 
     # TODO: Handle StaleElementException problems
     # TODO: Find elements. Wait until elem is not present
-    def __init__(self, web_driver, timeout=30):
-        self.driver = web_driver
+    def __init__(self, web_driver, url=None, timeout=30):
+        self.webdriver = web_driver
+        self.url = url
         self.timeout = timeout
-        self.driver.set_page_load_timeout(timeout)
+        self.webdriver.set_page_load_timeout(timeout)
 
     def navigate(self):
-        self.driver.get(self.url)
-        self._validate_page()
+        self.webdriver.get(self.url)
+        return self._validate_page()
 
     @abstractmethod
     def _validate_page(cls):
@@ -33,7 +34,7 @@ class PageObject(object):
         result = None
         for _ in range(retries):
             try:
-                result = WebDriverWait(self.driver, wait).until(lambda x: x.find_element(locator, element))
+                result = WebDriverWait(self.webdriver, wait).until(lambda x: x.find_element(locator, element))
                 logging.debug("Element '{}' found".format(element))
                 break
             except (NoSuchElementException, TimeoutException):
@@ -55,9 +56,9 @@ if __name__ == "__main__":
     # TODO: Delete
     driver = webdriver.Chrome()
     pp = PageObject(driver)
-    pp.driver.get("https://www.google.com")
+    pp.webdriver.get("https://www.google.com")
     print(pp.find_element(By.ID, "lst-ib"))
     print(pp.find_element(By.CLASS_NAME, "gsfi"))
     print(pp.find_element(By.XPATH, '//*[@id="lst-ib"]'))
     print(pp.find_element(By.LINK_TEXT, "Google Search"))
-    pp.driver.close()
+    pp.webdriver.close()
