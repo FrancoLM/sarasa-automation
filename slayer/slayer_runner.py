@@ -80,18 +80,17 @@ class SlayerRunner(object):
         parser.add_argument('--slayer-config',
                             required=False,
                             action='store',
-                            help='Slayer Framework Configuration File',
+                            help='Framework Configuration File',
                             default='{}{}config{}config.cfg'.format(os.path.dirname(__file__), os.sep, os.sep))
 
         parser.add_argument('--logs-config',
                             required=False,
-                            help='Slayer Logs Configuration File',
+                            help='Framework Loggers settings',
                             default='{}{}config{}logger.yaml'.format(os.path.dirname(__file__), os.sep, os.sep))
 
-        # TODO: Do we need this? output.log is pretty generic.... maybe I could add a timestamp...
         parser.add_argument('--log-filename',
                             required=False,
-                            help='Slayer Logs Configuration File name',
+                            help='Framework Logs Configuration File name',
                             default='output.log')
 
         parser.add_argument('--behave-config',

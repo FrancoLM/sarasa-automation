@@ -35,9 +35,8 @@ class BehaveExecutor(object):
         run_behave(self.behave_config)
 
     def setup_allure_logger(self, output_directory):
-        # Insert the Allure formatter as the first element of the outputs list, in order to make it match with the
-        # formats (since the default Behave formatter does not add a format)
-        # TODO: improve description
+        """Inserts the Allure formatter as the first element of the outputs list, in order to make it match with the
+        formats. Note that the default Behave formatter does not add a format)"""
         allure_report_directory = "allure"
         self.behave_config.outputs.insert(0, StreamOpener(filename=os.path.join(output_directory, allure_report_directory)))
         self.behave_config.format.append("allure_behave.formatter:AllureFormatter")

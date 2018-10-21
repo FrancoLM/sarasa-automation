@@ -10,7 +10,7 @@ REQUESTS_METHODS = {
 
 
 class RESTClient(object):
-    def __init__(self, base_urn, port, protocol="http"):
+    def __init__(self, base_urn, port=80, protocol="http"):
         self._base_urn = base_urn
         self._port = port
         self._protocol = protocol
