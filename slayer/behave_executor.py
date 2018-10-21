@@ -5,6 +5,7 @@ from argparse import ArgumentParser
 
 from behave.__main__ import run_behave
 from behave.configuration import Configuration as BehaveConfig
+from behave.formatter.base import StreamOpener
 
 
 class BehaveExecutor(object):
@@ -15,7 +16,7 @@ class BehaveExecutor(object):
 
                 Note: This function uses both the arguments in the behave.ini file and the command line arguments, but the latter
                 take precedence."""
-        # TODO: no estan andando los valores por consola
+        # TODO: cannot send parameters
         # TODO: Mention the arguments
 
     def parse_behave_arguments(self):
@@ -32,6 +33,15 @@ class BehaveExecutor(object):
     def call_executor(self):
         """Calls the Behave executor to run the scenarios"""
         run_behave(self.behave_config)
+
+    def setup_allure_logger(self, output_directory):
+        # Insert the Allure formatter as the first element of the outputs list, in order to make it match with the
+        # formats (since the default Behave formatter does not add a format)
+        # TODO: improve description
+        allure_report_directory = "allure"
+        self.behave_config.outputs.insert(0, StreamOpener(filename=os.path.join(output_directory, allure_report_directory)))
+        self.behave_config.format.append("allure_behave.formatter:AllureFormatter")
+
 
     @classmethod
     def import_steps_directories(cls):

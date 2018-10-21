@@ -16,6 +16,7 @@ def dec_log_execution_time(method):
 
     return timed_function
 
+
 def retry_until_not_none(retries=3, delay=1):
     """Retries a function or method until it returns different than None
 
@@ -48,9 +49,10 @@ def retry_until_not_none(retries=3, delay=1):
                         logging.debug("Retrying...")
                     time.sleep(mdelay)  # wait...
             return retry_value  # Ran out of tries
-        return f_retry  # true decorator -> decorated function
-    return deco_retry  # @retry(arg[, ...]) -> true decorator
 
+        return f_retry  # true decorator -> decorated function
+
+    return deco_retry  # @retry(arg[, ...]) -> true decorator
 
 
 def dec_retry_bool_function(retries, wait=3, backoff=2):
@@ -83,8 +85,23 @@ def dec_retry_bool_function(retries, wait=3, backoff=2):
                 mdelay *= backoff
                 function_value = f(*args, **kwargs)  # Try again
             return False  # Ran out of tries
+
         return function_retry  # true decorator -> decorated function
+
     return deco_retry  # @retry(arg[, ...]) -> true decorator
+
+
+def log_execution_time(method):
+    def timed_function(*args, **kw):
+        line_length = 42
+        start_time = time.time()
+        result = method(*args, **kw)
+        end_time = time.time()
+        total_execution_time = end_time - start_time
+        logging.info('Execution time: %2.2f sec' % total_execution_time)
+        return result
+
+    return timed_function
 
 
 # TODO: change behavior so it takes screenshots before/after function ends

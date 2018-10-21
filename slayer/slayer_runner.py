@@ -5,6 +5,7 @@ import sys
 from argparse import ArgumentParser
 
 import yaml
+from behave.formatter.base import StreamOpener
 from yaml.scanner import ScannerError
 
 from slayer.slayer_configuration import get_slayer_configuration
@@ -67,6 +68,10 @@ class SlayerRunner(object):
             raise
 
     def overwrite_default_configuration(self):
+        # TODO
+        pass
+
+    def generate_allure_report(self):
         pass
 
     def parse_slayer_arguments(self):

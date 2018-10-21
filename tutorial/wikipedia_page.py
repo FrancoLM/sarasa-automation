@@ -12,8 +12,8 @@ class WikipediaPage(PageObject):
     search_button = (By.XPATH, '//*[@id="search-form"]/fieldset/button')
     search_result_title = (By.XPATH, '//*[@id="firstHeading"]')
 
-    def __init__(self, web_driver):
-        super().__init__(web_driver)
+    def __init__(self, webdriver):
+        super().__init__(webdriver)
 
     def _validate_page(self):
         self.find_element(*self.page_title)

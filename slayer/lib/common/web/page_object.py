@@ -14,8 +14,8 @@ class PageObject(object):
 
     # TODO: Handle StaleElementException problems
     # TODO: Find elements. Wait until elem is not present
-    def __init__(self, web_driver, url=None, timeout=30):
-        self.webdriver = web_driver
+    def __init__(self, webdriver, url=None, timeout=30):
+        self.webdriver = webdriver
         self.url = url
         self.timeout = timeout
         self.webdriver.set_page_load_timeout(timeout)

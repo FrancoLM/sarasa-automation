@@ -34,19 +34,22 @@ def run_framework(framework_name="SLAYER"):
     # FIXME: Add variable for not printing the banner
     slayer_runner.log_slayer_information()
 
-
-
     # FIXME: Mention in doc that adding logging in the environment.py file could mess up the logging (for the before_all
     # FIXME: especially. Maybe a new logger could be added....
     behave_executor = BehaveExecutor()
     behave_executor.create_behave_config()
-    behave_executor.parse_behave_arguments()
+    # TODO: improve. Add if
+    #behave_executor.setup_logger(slayer_runner.variables["FWK_OUTPUT_DIR"])
+    behave_executor.setup_allure_logger(slayer_runner.variables["FWK_OUTPUT_DIR"])
+
+    #behave_executor.setup_logger(slayer_runner.variables["FWK_OUTPUT_DIR"])
+    #behave_executor.parse_behave_arguments()
 
     behave_executor.import_steps_directories()
     behave_executor.call_executor()
     # TODO: Refactor results output (execution summary)
-    # TODO: Reporter Factory
-    # generate_report()
+    # TODO: Reporter Factory. If report is enabled...
+    slayer_runner.generate_allure_report()
 
 
 if __name__ == "__main__":
