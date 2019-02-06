@@ -44,7 +44,7 @@ class SlayerRunner(object):
         sys.stdout = SysStdoutLogger(path=self.variables["FWK_LOGS_DIR"], filename=self.variables["FWK_LOG_FILENAME"])
 
     def log_environment_variables(self):
-        """Prints the SLayer environment variables to console"""
+        """Prints the Slayer environment variables to console"""
         for name, value in self.variables.items():
             if value:
                 self.print_variable_name_and_value(name, value)
@@ -131,7 +131,7 @@ class SlayerRunner(object):
         slayer_screenshots_dir = os.path.join(self.variables["FWK_OUTPUT_DIR"], slayer_cfg["artifacts"]["path"])
         self.set_new_environment_variable("FWK_ARTIFACTS_DIR", slayer_screenshots_dir)
 
-        slayer_log_filename = args.log_filename
+        slayer_log_filename = os.path.join(slayer_logs_dir, args.log_filename)
         self.set_new_environment_variable("FWK_LOG_FILENAME", slayer_log_filename)
 
         proxy = slayer_cfg["proxy"]

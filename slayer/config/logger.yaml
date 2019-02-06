@@ -24,7 +24,7 @@ handlers:
     level: INFO
     formatter: basic
     filename: output.log
-    mode: w
+    mode: a
     encoding: utf-8
 root:
   level: INFO

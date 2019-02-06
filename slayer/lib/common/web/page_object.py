@@ -22,10 +22,10 @@ class PageObject(object):
 
     def navigate(self):
         self.webdriver.get(self.url)
-        return self._validate_page()
+        return self.validate_page()
 
     @abstractmethod
-    def _validate_page(cls):
+    def validate_page(cls):
         return
 
     def find_element(self, locator, element, wait=3, retries=3):
